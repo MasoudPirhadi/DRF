@@ -1,0 +1,18 @@
+{% for article in articles %}
+    <article>
+        <h2 style="font-size: 1rem;">
+            {{article.title}}
+        </h2>
+        <div>
+            {{article.author}}
+        </div>
+        <div>
+            {{article.publish}}
+        </div>
+        <p style="font-size: 1rem;">
+            {{article.content}}
+        </p>
+    </article>
+    <hr>
+
+{% endfor %}
