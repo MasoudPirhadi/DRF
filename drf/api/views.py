@@ -1,10 +1,13 @@
 from django.shortcuts import render
 from .serializers import ArticleSerializers, UsersSerializers
 from blog.models import Article
-from rest_framework.request import Request
-from rest_framework.response import Response
+# from rest_framework.request import Request
+# from rest_framework import status
+# from rest_framework.response import Response
+# from rest_framework.views import APIView
 from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListAPIView, ListCreateAPIView
 from rest_framework.permissions import IsAdminUser
+from rest_framework.authentication import BasicAuthentication
 from .permissions import IsSuperUser, IsSuperUSerOrReadOnly, IsAuthorOrReadOnly
 from django.contrib.auth import get_user_model
 
@@ -31,3 +34,9 @@ class UsersDetailApiView(RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UsersSerializers
     permission_classes = [IsAdminUser]
+
+
+# class RevokeToken(APIView):
+#     def delete(self, request):
+#         request.auth.delete()
+#         return Response({'message': 'Token Revoked!'}, status=status.HTTP_204_NO_CONTENT)
