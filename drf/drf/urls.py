@@ -18,14 +18,26 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.authtoken.views import ObtainAuthToken
 # from api.views import RevokeToken
+from dj_rest_auth.views import PasswordResetConfirmView
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("blog.urls")),
     path('api/', include("api.urls")),
+    
     # path('api-auth/', include('rest_framework.urls')),
     # path('api-auth-token/', ObtainAuthToken.as_view(), name='token'),
     # path('api/revoke/', RevokeToken.as_view()),
+
     path('api/rest-auth/', include('dj_rest_auth.urls')),
     path('api/rest-auth/registration/', include('dj_rest_auth.registration.urls')),
+    # url zir moshkel dare dakhele app va bayad khodemon be in soorat besazimesh
+    path('password/reset/confirm/<uidb64>/<token>', PasswordResetConfirmView.as_view(), name='password_reset_confirm'),
+
+    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
