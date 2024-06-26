@@ -1,4 +1,10 @@
 # DRF
-This is example repo for drf (django rest framework)
+This is example repo for drf (django rest framework mini project)
 
-install virtualenv django djangorestframework
+how to run:
+1. pip install -r requirements.txt
+2. python manage.py migrate
+3. python manage.py runserver
+
+   Done!
+
